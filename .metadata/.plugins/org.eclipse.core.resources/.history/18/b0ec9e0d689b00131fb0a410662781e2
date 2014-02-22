@@ -1,0 +1,60 @@
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.border.*;
+import java.awt.event.*;
+import javax.swing.Timer;
+
+
+@SuppressWarnings("serial")
+public class button extends JButton{
+	
+	public button(String name){
+		super(name);
+		
+	}
+	
+	int xCoord=-1;
+	public void setXcoord(int x){
+		xCoord=x;
+	}
+	
+	int yCoord=-1;
+	public void setYcoord(int y){
+		yCoord=y;
+	}
+	
+	public int getXcoord(){
+		return xCoord;
+	}
+	
+	public int getYcoord(){
+		return yCoord;
+	}
+	
+	int pos=-1;
+	public void setPos(int z){
+		pos=z;
+	}
+	
+	public int getPos(){
+		return pos;
+	}
+	
+	boolean isBomb;
+	public void setBomb(boolean bomb){
+		if(bomb==true){
+			isBomb=true;
+		}
+		else{
+			isBomb=false;
+		}
+		}
+	
+	public boolean getBomb(){
+		return isBomb;
+	}
+	}
+	
+	
+	
+	

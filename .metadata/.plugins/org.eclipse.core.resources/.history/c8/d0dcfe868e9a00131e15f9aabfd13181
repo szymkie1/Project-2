@@ -1,0 +1,31 @@
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.border.*;
+import java.awt.event.*;
+import javax.swing.Timer;
+
+
+
+class main{
+	@SuppressWarnings("deprecation") 
+    public static void main(String[] args) {
+    	
+    	JFrame window = new JFrame("Minesweeper");
+    	
+    	JMenuBar menu = new JMenuBar();
+    	window.add(menu);
+    	
+    	JMenu gMenu = new JMenu("Game");
+    	menu.add(gMenu);
+    	
+    	
+    	
+    	
+    	window.pack();
+    	window.show();
+    	
+    	
+    	
+    	
+    }
+}

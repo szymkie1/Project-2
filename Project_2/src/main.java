@@ -1,8 +1,29 @@
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.border.*;
+import java.awt.event.*;
+import javax.swing.Timer;
+
 
 
 class main{
+	
     public static void main(String[] args) {
-        System.out.println("Hello World!"); // Display the string.
-        System.out.println("THis is cool!");
+    	
+    	
+    button mineButtons[];
+    
+    mineButtons=new button[100];
+    
+    mineButtons[1]= new button();
+    
+    mineButtons[1].setXcoord(99);
+    
+    System.out.println(mineButtons[1].getXcoord());
+    
+    
+   
+    	
+    	
     }
 }

@@ -1,0 +1,61 @@
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.border.*;
+import java.awt.event.*;
+import javax.swing.Timer;
+
+
+
+class main{
+	@SuppressWarnings("deprecation")
+    public static void main(String[] args) {
+    	
+    	JFrame board = new JFrame("Minesweeper");
+    	JPanel display = new JPanel(); 
+    	
+    	board.getContentPane().setLayout(new BorderLayout());
+    	display.setLayout(new FlowLayout());
+    	
+    	JLabel msgLabel = new JLabel(); 
+    	
+    	board.getContentPane().add(msgLabel, "Center");  
+    	
+    	JMenuBar topMenu = new JMenuBar();
+    	
+    	JMenu gameMenu = new JMenu("Game");
+    	
+    	topMenu.add(gameMenu);
+    	
+    	JMenu abtMenu = new JMenu("About");
+    	
+    	topMenu.add(abtMenu);
+    	
+    	
+    	board.setJMenuBar(topMenu);
+    	
+    	JMenuItem gReset = new JMenuItem("Reset");
+    	gameMenu.add(gReset);
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	board.pack();  
+    	board.setVisible(true);
+    	
+        board.show();
+    	
+
+    	
+    	
+    }
+}
