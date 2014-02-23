@@ -11,7 +11,9 @@ import javax.swing.Timer;
 
 @SuppressWarnings("serial")
 
-
+public class mineGUI extends JFrame{
+	
+}
 
 class main{
 	
