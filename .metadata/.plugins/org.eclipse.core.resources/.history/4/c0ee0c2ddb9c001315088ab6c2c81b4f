@@ -167,7 +167,6 @@ public class mineGUI extends JFrame implements ActionListener{
 		else if(e.getSource() == gExit){
 			System.out.println("Exit");
 			super.setVisible(false);
-			super.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		}
 		else if(e.getSource() == hHelp){
 			JPopupMenu pop = new JPopupMenu(); 
