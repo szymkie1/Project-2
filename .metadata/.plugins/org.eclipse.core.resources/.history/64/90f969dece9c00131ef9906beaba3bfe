@@ -199,16 +199,12 @@ public class mineGUI extends JFrame implements ActionListener{
 
 		@Override
 		public void mousePressed(MouseEvent e) {
-			
-			if(SwingUtilities.isRightMouseButton(e) || e.isControlDown() ){
-				System.out.println("YAY!");
-			}
+			System.out.println(SwingUtilities.isRightMouseButton(e));
 			
 		}
 
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			
 			
 			
 		}
@@ -217,12 +213,10 @@ public class mineGUI extends JFrame implements ActionListener{
 		public void mouseEntered(MouseEvent e) {
 			
 			
-			
 		}
 
 		@Override
 		public void mouseExited(MouseEvent e) {
-			
 			
 			
 		}

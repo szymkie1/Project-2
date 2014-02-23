@@ -122,7 +122,7 @@ public class mineGUI extends JFrame implements ActionListener{
 			mboard.add(mineButtons[i]);
 			mineButtons[i].setPos(i);
 			mineButtons[i].addMouseListener(new buttonListener());
-			mineButtons[i].addActionListener(new buttonListener());
+			//mineButtons[i].addActionListener(new buttonListener());
 			
 		}
 		
@@ -181,49 +181,19 @@ public class mineGUI extends JFrame implements ActionListener{
 		
 	}
 	
-	class buttonListener implements ActionListener, MouseListener{
+	class buttonListener extends MouseAdapter implements ActionListener{
+		public void actionPerformed(MouseEvent r){
+			
+			System.out.println(r.getButton());
 		
+			
+			
+		}
 		
 		public void actionPerformed(ActionEvent e){
 			
 			button currButton = (button)e.getSource();
 			System.out.println(currButton.getPos());
-			
-		}
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			
-			if(SwingUtilities.isRightMouseButton(e) || e.isControlDown() ){
-				System.out.println("YAY!");
-			}
-			
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			
-			
-			
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			
-			
-			
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			
-			
 			
 		}
 		

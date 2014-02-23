@@ -120,9 +120,7 @@ public class mineGUI extends JFrame implements ActionListener{
 		for(int i=0; i<100; i++){
 			mineButtons[i] = new button();
 			mboard.add(mineButtons[i]);
-			mineButtons[i].setPos(i);
-			mineButtons[i].addMouseListener(new buttonListener());
-			mineButtons[i].addActionListener(new buttonListener());
+			mineButtons[i].addActionListener(this);
 			
 		}
 		
@@ -166,65 +164,14 @@ public class mineGUI extends JFrame implements ActionListener{
 			super.setVisible(false);
 		}
 		else if(e.getSource() == hHelp){
-			JPopupMenu pop = new JPopupMenu(); 
-			String text = "Help is here!";
-			pop.add(text);
-			pop.isVisible();
-			
+			JLabel hLabel = new JLabel("Here is some help");
+			add(hLabel);
 		}
 		else if(e.getSource() == hAbout){
 			System.out.println("About");
 		}
 		else{
 			System.out.println(e);
-		}
-		
-	}
-	
-	class buttonListener implements ActionListener, MouseListener{
-		
-		
-		public void actionPerformed(ActionEvent e){
-			
-			button currButton = (button)e.getSource();
-			System.out.println(currButton.getPos());
-			
-		}
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			
-			if(SwingUtilities.isRightMouseButton(e) || e.isControlDown() ){
-				System.out.println("YAY!");
-			}
-			
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			
-			
-			
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			
-			
-			
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			
-			
-			
 		}
 		
 	}

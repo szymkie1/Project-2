@@ -182,7 +182,13 @@ public class mineGUI extends JFrame implements ActionListener{
 	}
 	
 	class buttonListener implements ActionListener, MouseListener{
+		public void actionPerformed(MouseEvent e){
+			
+			System.out.println(e.getX());
 		
+			
+			
+		}
 		
 		public void actionPerformed(ActionEvent e){
 			
@@ -199,31 +205,25 @@ public class mineGUI extends JFrame implements ActionListener{
 
 		@Override
 		public void mousePressed(MouseEvent e) {
-			
-			if(SwingUtilities.isRightMouseButton(e) || e.isControlDown() ){
-				System.out.println("YAY!");
-			}
+			// TODO Auto-generated method stub
 			
 		}
 
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			
-			
+			// TODO Auto-generated method stub
 			
 		}
 
 		@Override
 		public void mouseEntered(MouseEvent e) {
-			
-			
+			// TODO Auto-generated method stub
 			
 		}
 
 		@Override
 		public void mouseExited(MouseEvent e) {
-			
-			
+			// TODO Auto-generated method stub
 			
 		}
 		
