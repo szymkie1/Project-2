@@ -126,22 +126,12 @@ public class mineGUI extends JFrame implements ActionListener{
 			mboard.add(mineButtons[i][j]);
 			mineButtons[i][j].setXcoord(i);
 			mineButtons[i][j].setYcoord(j);
-			int position=(i*10)+j;
+			int position=(i+1)+j;
 			mineButtons[i][j].setPos(position);
 			mineButtons[i][j].addMouseListener(new buttonListener());
 			mineButtons[i][j].addActionListener(new buttonListener());
 			}
 			
-		}
-		
-		for(int a=0; a<10; a++){
-			for(int b=0; b<10; b++){
-				for(int c=0; c<10; c++){
-				if(mineLocs[a]==mineButtons[b][c].getPos()){
-					mineButtons[b][c].setBomb(1);
-				}
-				}
-			}
 		}
 		
 		container.add(top);
@@ -152,13 +142,6 @@ public class mineGUI extends JFrame implements ActionListener{
 		
 		
 		
-		
-		mineButtons[1][1].setAdjacentBombs();
-		System.out.println(mineButtons[1][1].getAdjacentBombs());
-		System.out.println(mineButtons[1][1].getAdjacentBombsString());
-		mineButtons[1][1].setAdjacentBombs();
-		System.out.println(mineButtons[1][1].getAdjacentBombs());
-		System.out.println(mineButtons[1][1].getAdjacentBombsString());
 		
 		
 		
@@ -241,7 +224,7 @@ public class mineGUI extends JFrame implements ActionListener{
 				
 				button currButton = (button)e.getSource();
 				
-			
+				System.out.println(currButton.getPos());
 				
 				if(currButton.getState() == 0){
 					currButton.setText("M");

@@ -37,38 +37,19 @@ public class button extends JButton{
 		return pos;
 	}
 	
-	int state=0;
-	public void setState(int a){
-		state=a;
-	}
+	boolean isBomb;
+	public void setBomb(boolean bomb){
+		if(bomb==true){
+			isBomb=true;
+		}
+		else{
+			isBomb=false;
+		}
+		}
 	
-	public int getState(){
-		return state;
-	}
-	
-	int isBomb=0;
-	public void setBomb(int b){
-		isBomb=b;
-	}
-	
-	public int getBomb(){
+	public boolean getBomb(){
 		return isBomb;
 	}
-	
-	int adjacent=0;
-	public void setAdjacentBombs(){
-		adjacent=adjacent+1;
-	}
-	
-	public int getAdjacentBombs(){
-		return adjacent;
-	}
-	
-	public String getAdjacentBombsString(){
-		return Integer.toString(adjacent);
-	}
-	
-	
 	}
 	
 	

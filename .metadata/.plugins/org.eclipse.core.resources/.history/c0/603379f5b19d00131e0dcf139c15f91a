@@ -16,8 +16,7 @@ public class mineGUI extends JFrame implements ActionListener{
 	private JMenuBar topMenu;
 	private JMenu gameMenu,hMenu;
 	private JMenuItem gReset, gTopTen, gExit, hHelp, hAbout;
-	private mine mines = new mine();
-	private int[] mineLocs = new int[10];
+	private mine mines;
 
 	
 	public mineGUI(){
@@ -113,8 +112,7 @@ public class mineGUI extends JFrame implements ActionListener{
 		
 		
 		
-		mines.setMines(10);
-		mineLocs=mines.getMines();
+		
 		
 		
 	
@@ -126,22 +124,10 @@ public class mineGUI extends JFrame implements ActionListener{
 			mboard.add(mineButtons[i][j]);
 			mineButtons[i][j].setXcoord(i);
 			mineButtons[i][j].setYcoord(j);
-			int position=(i*10)+j;
-			mineButtons[i][j].setPos(position);
 			mineButtons[i][j].addMouseListener(new buttonListener());
 			mineButtons[i][j].addActionListener(new buttonListener());
 			}
 			
-		}
-		
-		for(int a=0; a<10; a++){
-			for(int b=0; b<10; b++){
-				for(int c=0; c<10; c++){
-				if(mineLocs[a]==mineButtons[b][c].getPos()){
-					mineButtons[b][c].setBomb(1);
-				}
-				}
-			}
 		}
 		
 		container.add(top);
@@ -149,19 +135,6 @@ public class mineGUI extends JFrame implements ActionListener{
 		container.add(mboard);
 		
 		add(container);
-		
-		
-		
-		
-		mineButtons[1][1].setAdjacentBombs();
-		System.out.println(mineButtons[1][1].getAdjacentBombs());
-		System.out.println(mineButtons[1][1].getAdjacentBombsString());
-		mineButtons[1][1].setAdjacentBombs();
-		System.out.println(mineButtons[1][1].getAdjacentBombs());
-		System.out.println(mineButtons[1][1].getAdjacentBombsString());
-		
-		
-		
 		
 		
 		
@@ -181,7 +154,13 @@ public class mineGUI extends JFrame implements ActionListener{
 	
 	}
 	
-	
+	public void mineInfo(){
+		
+		mines = new mine();
+		
+		mines.setMines(10);
+		
+	}
 
 
 	
@@ -234,14 +213,12 @@ public class mineGUI extends JFrame implements ActionListener{
 		@Override
 		public void mousePressed(MouseEvent e) {
 			
-			
+			mineInfo();
 			
 			
 			if(SwingUtilities.isRightMouseButton(e) || e.isControlDown() ){
 				
 				button currButton = (button)e.getSource();
-				
-			
 				
 				if(currButton.getState() == 0){
 					currButton.setText("M");

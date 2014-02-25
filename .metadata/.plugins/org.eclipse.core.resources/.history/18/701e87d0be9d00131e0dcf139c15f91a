@@ -55,19 +55,6 @@ public class button extends JButton{
 		return isBomb;
 	}
 	
-	int adjacent=0;
-	public void setAdjacentBombs(){
-		adjacent=adjacent+1;
-	}
-	
-	public int getAdjacentBombs(){
-		return adjacent;
-	}
-	
-	public String getAdjacentBombsString(){
-		return Integer.toString(adjacent);
-	}
-	
 	
 	}
 	

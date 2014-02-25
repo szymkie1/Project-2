@@ -153,13 +153,6 @@ public class mineGUI extends JFrame implements ActionListener{
 		
 		
 		
-		mineButtons[1][1].setAdjacentBombs();
-		System.out.println(mineButtons[1][1].getAdjacentBombs());
-		System.out.println(mineButtons[1][1].getAdjacentBombsString());
-		mineButtons[1][1].setAdjacentBombs();
-		System.out.println(mineButtons[1][1].getAdjacentBombs());
-		System.out.println(mineButtons[1][1].getAdjacentBombsString());
-		
 		
 		
 		
@@ -241,7 +234,9 @@ public class mineGUI extends JFrame implements ActionListener{
 				
 				button currButton = (button)e.getSource();
 				
-			
+				if(currButton.getBomb() == 1){
+					System.out.println("BOMB!");
+				}
 				
 				if(currButton.getState() == 0){
 					currButton.setText("M");
