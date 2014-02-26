@@ -8,7 +8,6 @@ public class mine{
 	
 	private Integer[] locations = new Integer[100];
 	public int[] bombLocs = new int[10];
-	public int currentMines=10;
 	
 	public void setMines(int numMines){
 		
@@ -38,14 +37,6 @@ public class mine{
 	public int[] getMines(){
 		
 		return bombLocs;
-	}
-	
-	public void decMines(){
-		currentMines=currentMines-1;
-	}
-	
-	public int getCurrentMines(){
-		return currentMines;
 	}
 	
 	

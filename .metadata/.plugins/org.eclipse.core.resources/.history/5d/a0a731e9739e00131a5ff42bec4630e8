@@ -24,6 +24,11 @@ class main{
     	mineGUI gui = new mineGUI();
     	gui.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
     	
+    
+    
+    
+   
+    	
     	
     }
 }

@@ -129,7 +129,7 @@ public class mineGUI extends JFrame implements ActionListener{
 			int position=(i*10)+j;
 			mineButtons[i][j].setPos(position);
 			mineButtons[i][j].addMouseListener(new buttonListener());
-			mineButtons[i][j].addActionListener(new buttonListener());
+			
 			}
 			
 		}
@@ -153,12 +153,7 @@ public class mineGUI extends JFrame implements ActionListener{
 		
 		
 		
-		mineButtons[1][1].setAdjacentBombs();
-		System.out.println(mineButtons[1][1].getAdjacentBombs());
-		System.out.println(mineButtons[1][1].getAdjacentBombsString());
-		mineButtons[1][1].setAdjacentBombs();
-		System.out.println(mineButtons[1][1].getAdjacentBombs());
-		System.out.println(mineButtons[1][1].getAdjacentBombsString());
+		
 		
 		
 		
@@ -182,6 +177,8 @@ public class mineGUI extends JFrame implements ActionListener{
 	}
 	
 	
+	
+	
 
 
 	
@@ -189,6 +186,7 @@ public class mineGUI extends JFrame implements ActionListener{
 		
 		if(e.getSource() == gReset){
 			System.out.println("Reset Pressed");
+			
 		}
 		
 		else if(e.getSource() == gTopTen){
@@ -196,18 +194,25 @@ public class mineGUI extends JFrame implements ActionListener{
 		}
 		else if(e.getSource() == gExit){
 			System.out.println("Exit");
-			super.setVisible(false);
-			super.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+			System.exit(0);
 		}
 		else if(e.getSource() == hHelp){
-			JPopupMenu pop = new JPopupMenu(); 
-			String text = "Help is here!";
-			pop.add(text);
-			pop.isVisible();
+			JOptionPane.showMessageDialog(mineGUI.this,
+					"The game will start when you left click on the game board \n"
+					+ "Left clicking will reveal a mine or the number of adjacent mines \n"
+					+ "Right clicking will first indicate that that location hides a mine \n"
+					+ "Right clicking again will indicate that there might be a mine there\n"
+					+ "To win the game,  mark the 10 mines and clear the other 90 squares \n"
+	                ,"Help", JOptionPane.PLAIN_MESSAGE );
 			
 		}
 		else if(e.getSource() == hAbout){
-			System.out.println("About");
+			JOptionPane.showMessageDialog(mineGUI.this,
+	                  "CS 342 Project Two-Minesweeper \n"
+					+" Authors: \n"
+	                +"Tianniu Lei(tlei2) \n"
+					+"Ryan Szymkiewicz(szymkie1) \n"
+					,"About", JOptionPane.PLAIN_MESSAGE );
 		}
 		else{
 			System.out.println(e);
@@ -215,16 +220,9 @@ public class mineGUI extends JFrame implements ActionListener{
 		
 	}
 	
-	class buttonListener implements ActionListener, MouseListener{
+	class buttonListener implements MouseListener{
 		
 		
-		public void actionPerformed(ActionEvent e){
-			
-			button currButton = (button)e.getSource();
-			//System.out.println(currButton.getPos());
-			
-		}
-
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
@@ -246,6 +244,10 @@ public class mineGUI extends JFrame implements ActionListener{
 				if(currButton.getState() == 0){
 					currButton.setText("M");
 					currButton.setState(1);
+					if(currButton.getBomb() == 1){
+						mines.decMines();
+					}
+					System.out.println(mines.getCurrentMines());
 				}
 				else if(currButton.getState() == 1){
 					currButton.setText("?");
