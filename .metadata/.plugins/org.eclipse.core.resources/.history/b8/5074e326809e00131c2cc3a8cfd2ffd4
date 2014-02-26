@@ -23,7 +23,7 @@ public class mineGUI extends JFrame implements ActionListener{
 	public mineGUI(){
 		
 		super("Minesweeper");
-		setSize(500,500);
+		setSize(800,800);
 		
 		
 		
