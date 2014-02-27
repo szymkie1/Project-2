@@ -18,8 +18,6 @@ public class mineGUI extends JFrame implements ActionListener{
 	private JMenuItem gReset, gTopTen, gExit, hHelp, hAbout;
 	private mine mines = new mine();
 	private int[] mineLocs = new int[10];
-	private JButton resetButton;
-	private JLabel timeElapsed,buttonsLeft,timeLabel,buttonLabel;
 
 	
 	public mineGUI(){
@@ -100,26 +98,18 @@ public class mineGUI extends JFrame implements ActionListener{
 		
 		
 		
+		//boardContainer=getContentPane();
+		
+		//boardContainer.add(top);
+		JLabel time = new JLabel("Time");
+		
+		top.add(time);
 		
 		
 		
 		
+		//boardContainer.add(mboard);
 		
-		timeLabel = new JLabel("Time: ");
-		top.add(timeLabel);
-		
-		timeElapsed = new JLabel(" 2 ");
-		top.add(timeElapsed);
-		
-		resetButton = new JButton("Reset");
-		resetButton.addActionListener(this);
-		top.add(resetButton);
-		
-		buttonLabel = new JLabel("Buttons Left: ");
-		top.add(buttonLabel);
-		
-		buttonsLeft = new JLabel(" 2 ");
-		top.add(buttonsLeft);
 		
 		
 		
@@ -225,10 +215,6 @@ public class mineGUI extends JFrame implements ActionListener{
 					+"Ryan Szymkiewicz(szymkie1) \n"
 					,"About", JOptionPane.PLAIN_MESSAGE );
 		}
-		else if(e.getSource() == resetButton){
-			System.out.println("Reset Button Pressed.");
-			
-		}
 		else{
 			System.out.println(e);
 		}
@@ -262,13 +248,14 @@ public class mineGUI extends JFrame implements ActionListener{
 					if(currButton.getBomb() == 1){
 						mines.decMines();
 					}
-					
+					System.out.println(mines.getCurrentMines());
 				}
 				else if(currButton.getState() == 1){
 					currButton.setText("?");
 					if(currButton.getBomb() == 1){
 						mines.incMines();
-					   }
+						System.out.println(mines.getCurrentMines());
+					}
 					currButton.setState(2);
 				}
 				else if(currButton.getState() == 2){

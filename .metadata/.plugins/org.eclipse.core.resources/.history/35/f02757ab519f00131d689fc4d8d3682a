@@ -44,15 +44,9 @@ public class mine{
 		currentMines=currentMines-1;
 	}
 	
-	public void incMines(){
-		currentMines=currentMines+1;
-	}
-	
 	public int getCurrentMines(){
 		return currentMines;
 	}
-	
-	
 	
 	
 	

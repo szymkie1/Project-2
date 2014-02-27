@@ -19,7 +19,7 @@ public class mineGUI extends JFrame implements ActionListener{
 	private mine mines = new mine();
 	private int[] mineLocs = new int[10];
 	private JButton resetButton;
-	private JLabel timeElapsed,buttonsLeft,timeLabel,buttonLabel;
+	private JLabel timeElapsed,buttonsLeft;
 
 	
 	public mineGUI(){
@@ -105,20 +105,15 @@ public class mineGUI extends JFrame implements ActionListener{
 		
 		
 		
-		timeLabel = new JLabel("Time: ");
-		top.add(timeLabel);
-		
-		timeElapsed = new JLabel(" 2 ");
+		timeElapsed = new JLabel("Time"+"2");
 		top.add(timeElapsed);
 		
 		resetButton = new JButton("Reset");
 		resetButton.addActionListener(this);
 		top.add(resetButton);
 		
-		buttonLabel = new JLabel("Buttons Left: ");
-		top.add(buttonLabel);
 		
-		buttonsLeft = new JLabel(" 2 ");
+		buttonsLeft = new JLabel("Squares Left"+"2");
 		top.add(buttonsLeft);
 		
 		
