@@ -1,18 +1,3 @@
-//******************
-//CS 342 Project Two-Minesweeper
-//Authors
-//Tianniu Lei
-//Ryan Szymkiewicz
-//mineGUI.java
-//this file contains the bulk of the game
-//the interface UI is contained in this file along
-//with the algorithm for determining and filling mine squares
-//parts of this code (GUI related) were influenced by code posted by
-//Prof. Troy and also from the Java Swing GUI Tutorials
-//******************
-
-
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.Timer;
@@ -23,14 +8,11 @@ import javax.swing.*;
 
 @SuppressWarnings("serial")
 
-//mineGUI class for the user interface-extend JFrame to set up interface
-//and set up ability to get input by interacting with the game board
 public class mineGUI extends JFrame implements ActionListener{
 	
-	
-	//"Global" variables that will be used in this file.
-	//explained in detail later on
 	private button mineButtons[][] = new button[10][10];	
+	private GridLayout mineBoard, infoBoard;
+	private Container boardContainer;
 	private JMenuBar topMenu;
 	private JMenu gameMenu,hMenu;
 	private JMenuItem gReset, gTopTen, gExit, hHelp, hAbout;
@@ -45,22 +27,17 @@ public class mineGUI extends JFrame implements ActionListener{
 	
 	public mineGUI(){
 		
-		super("Minesweeper");//set up new JFrame for game
-		setSize(500,350);//set game size to 500x350
+		super("Minesweeper");
+		setSize(500,350);
 		
 		
 		
-		topMenu = new JMenuBar();//create menu bar
-		setJMenuBar(topMenu);//set menu bar on frame
+		topMenu = new JMenuBar();
+		setJMenuBar(topMenu);
 		
-		gameMenu = new JMenu("Game");//create game menu
-		topMenu.add(gameMenu);//add game menu
+		gameMenu = new JMenu("Game");
+		topMenu.add(gameMenu);
 		
-		//Initialize each member of menu item.
-		//add them to the menu,set a mnemonic for keyboard interaction depending on
-		//title name.
-		//add actionListener to register human interaction
-		//repeat for next items
 		gReset = new JMenuItem("Reset");
 		gameMenu.add(gReset);
 		gReset.setMnemonic(KeyEvent.VK_R);
@@ -84,11 +61,9 @@ public class mineGUI extends JFrame implements ActionListener{
 		gExit.addActionListener(this);
 		gameMenu.add(gExit);
 		
-		//create menu 2 of 2
 		hMenu = new JMenu("Help");
 		topMenu.add(hMenu);
 		
-		//same as other menu,  just different names
 		hHelp = new JMenuItem("Help");
 		hHelp.setMnemonic(KeyEvent.VK_H);
 		hHelp.setAccelerator(KeyStroke.getKeyStroke(
@@ -106,8 +81,15 @@ public class mineGUI extends JFrame implements ActionListener{
 		
 		
 		
-		//the UI will have 2 JPanels-1 grid layout and 1 plain panel
-		//that will display game information
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		JPanel mboard = new JPanel(new GridLayout(10,10));
 		
@@ -115,16 +97,16 @@ public class mineGUI extends JFrame implements ActionListener{
 		
 		
 		
-		//create panel that will contain previous two panels
-		//place that in a box layout so that they can be placed on top of each other
-		//without having to do much reallignment
-		JPanel uiBoard = new JPanel();
-		uiBoard.setLayout(new BoxLayout(uiBoard, BoxLayout.Y_AXIS));
+		
+		JPanel container = new JPanel();
+		container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
 		
 		
 		
-		//these initialize the information that will be displayed in the top panel.
-		//time,reset button and buttons left
+		
+		
+		
+		
 		
 		timeLabel = new JLabel("Time: ");
 		top.add(timeLabel);
@@ -142,24 +124,18 @@ public class mineGUI extends JFrame implements ActionListener{
 		buttonsLeft = new JLabel(" 2 ");
 		top.add(buttonsLeft);
 		
-		
-		//create timer to keep track of game time
 		int delay=1000;
 		time = new Timer(delay, new timeInfo());
 		
 		
 		
-		//call mine class to determine where the mines will be placed
-		//returns mineLocs which is a 10 element array of locations
+		
 		mines.setMines(10);
 		mineLocs=mines.getMines();
 		
 		
 	
-		//initialize each button of the grid in a 2D array
-		//set preferred size to prevent resizing issues
-		//add button to board
-		//set coordinates and position,  and also add mouse listener to each button
+		
 		
 		for(int i=0; i<10; i++){
 			for(int j=0; j<10; j++){
@@ -177,7 +153,6 @@ public class mineGUI extends JFrame implements ActionListener{
 			
 		}
 		
-		//use mineLocs array and the button array to set the mines in 10 squares
 		for(int a=0; a<10; a++){
 			for(int b=0; b<10; b++){
 				for(int c=0; c<10; c++){
@@ -188,16 +163,29 @@ public class mineGUI extends JFrame implements ActionListener{
 			}
 		}
 		
-		//add the top panel and mine board to the container panel
-		uiBoard.add(top);
-		uiBoard.add(mboard);
+		container.add(top);
 		
-		//add container panel to JFrame
-		add(uiBoard);
+		container.add(mboard);
+		
+		add(container);
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
 		countAdjacentMines();
+		
+		
+		
+		
+		
 		
 		
 		
@@ -248,7 +236,7 @@ public class mineGUI extends JFrame implements ActionListener{
 	}
 
 	private void countAdjacentMines() {
-		
+		// TO DO: STUDENT CODE HERE
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
 				if (mineButtons[i][j].getBomb() != 1) {
@@ -271,27 +259,18 @@ public class mineGUI extends JFrame implements ActionListener{
 	} // end setAdjacentBombs
 	
 	
-	//this class implements the time keeping requirement for the program
-	//the game starts keeping time once a left button is clicked,
-	//the time is set to display in the format min:second
-	//time is incremented each second and displayed
+	
 	private class timeInfo implements ActionListener{
 		
 		public void actionPerformed(ActionEvent a){
-			int minute=currTime/60;
-			int seconds=currTime-(minute*60);
-			timeElapsed.setText(Integer.toString(minute) +":"+Integer.toString(seconds));
+			timeElapsed.setText(Integer.toString(currTime));
 			currTime++;
 		}
 		
 	}
-	
-	
 
 
-	//this actionPerformed class takes actionEvents from the menu items and determines 
-	//what should occur.  each menu item has its own function based on what it is needed
-	//to do
+	
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource() == gReset){
@@ -334,10 +313,6 @@ public class mineGUI extends JFrame implements ActionListener{
 		
 	}
 	
-	
-	//mouseListener for each button.  This allows for interaction when the grid locations
-	//have been pressed.  All code is conducted from mousePressed,  but other
-	//compier needed functions are included,  but not used
 	class buttonListener implements MouseListener{
 		
 		
@@ -352,17 +327,13 @@ public class mineGUI extends JFrame implements ActionListener{
 			
 			
 			
-			//right click options-Windows/Unix-use right click
-			//macs-check if control button is pressed
+			
 			if(SwingUtilities.isRightMouseButton(e) || e.isControlDown() ){
 				
-				//cast event to a button so that it can be changed depending on current
-				//state-nothing,M or ?
 				button currButton = (button)e.getSource();
 				
 			
-				//if 0  then set to M...decrement mines left to be found if spot actually
-				//contains a bomb
+				
 				if(currButton.getState() == 0){
 					currButton.setText("M");
 					currButton.setState(1);
@@ -371,9 +342,6 @@ public class mineGUI extends JFrame implements ActionListener{
 					}
 					
 				}
-				
-				//change to ? state-increment mines left to be found if spot actually 
-				//contains one
 				else if(currButton.getState() == 1){
 					currButton.setText("?");
 					if(currButton.getBomb() == 1){
@@ -381,7 +349,6 @@ public class mineGUI extends JFrame implements ActionListener{
 					   }
 					currButton.setState(2);
 				}
-				//return state back to nothing
 				else if(currButton.getState() == 2){
 					currButton.setText("");
 					currButton.setState(0);
@@ -394,10 +361,8 @@ public class mineGUI extends JFrame implements ActionListener{
 				
 			}
 			
-			//left click functions
 			else if(SwingUtilities.isLeftMouseButton(e)){
 				
-				//if no clicks before and we got here,  start timer
 				if(numLClicks == 0){
 					time.start();
 				}
